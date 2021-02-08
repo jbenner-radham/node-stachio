@@ -1,0 +1,50 @@
+{
+  "name": "stachio",
+  "version": "0.0.0",
+  "description": "...",
+  "keywords": [
+    "static",
+    "site",
+    "generator",
+    "harp",
+    "handlebars",
+    "html",
+    "layout",
+    "partial",
+    "template"
+  ],
+  "homepage": "https://github.com/jbenner-radham/node-stachio#readme",
+  "bugs": {
+    "url": "https://github.com/jbenner-radham/node-stachio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbenner-radham/node-stachio.git"
+  },
+  "license": "MIT",
+  "author": "James Benner",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "fs-extra": "^9.1.0",
+    "handlebars": "^4.7.6",
+    "klaw-sync": "^6.0.0",
+    "lodash.negate": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@types/fs-extra": "^9.0.6",
+    "@types/lodash.negate": "^3.0.6",
+    "babel-loader": "^8.2.2",
+    "sort-package-json": "^1.48.1",
+    "ts-loader": "^8.0.15",
+    "typescript": "^4.1.3",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
+  }
+}

@@ -8,11 +8,6 @@ import readPartialEntry from './read-partial-entry';
 
 export default function readPartials(): { [name: string]: string } {
     const cwd = process.cwd();
-
-    /**
-     * Implement Harp partials.
-     * @see http://harpjs.com/docs/development/partial
-     */
     const partialEntries = fs.readdirSync(cwd)
         .filter(isPrivateFilename)
         .filter(isHandlebarsFilename)

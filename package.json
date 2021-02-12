@@ -39,6 +39,7 @@
     "@babel/core": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
     "@types/fs-extra": "^9.0.6",
+    "@types/klaw-sync": "^6.0.0",
     "@types/lodash.negate": "^3.0.6",
     "babel-loader": "^8.2.2",
     "sort-package-json": "^1.48.1",

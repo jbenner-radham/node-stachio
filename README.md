@@ -1,2 +1,2 @@
 # node-stachio
-Render mustachio'd templates (Handlebars.js) into HTML.
+Render mustachio'd templates (Handlebars) into HTML.

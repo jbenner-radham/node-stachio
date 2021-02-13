@@ -1,7 +1,7 @@
 {
   "name": "stachio",
   "version": "0.0.0",
-  "description": "...",
+  "description": "Render mustachio'd templates (Handlebars) into HTML.",
   "keywords": [
     "static",
     "site",
@@ -49,6 +49,9 @@
     "@types/klaw-sync": "^6.0.0",
     "@types/lodash.negate": "^3.0.6",
     "babel-loader": "^8.2.2",
+    "chalk": "^4.1.0",
+    "meow": "^9.0.0",
+    "readme-md-cli": "^0.12.0",
     "sort-package-json": "^1.48.1",
     "ts-loader": "^8.0.15",
     "typescript": "^4.1.3",

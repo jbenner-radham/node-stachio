@@ -6,13 +6,12 @@ import isLayoutFilename from './is-layout-filename';
 import isPrivateFilename from './is-private-filename';
 import readPartialEntry from './read-partial-entry';
 
-export default function readPartials(): { [name: string]: string } {
-    const cwd = process.cwd();
+export default function readPartials(cwd = ''): { [name: string]: string } {
     const partialEntries = fs.readdirSync(cwd)
         .filter(isPrivateFilename)
         .filter(isHandlebarsFilename)
         .filter(negate(isLayoutFilename))
-        .map(readPartialEntry);
+        .map(partial => readPartialEntry(partial, { cwd }));
 
     return Object.fromEntries(partialEntries);
 }

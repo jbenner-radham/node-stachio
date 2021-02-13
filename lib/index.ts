@@ -11,15 +11,17 @@ import renderTemplate from './render-template';
 import writeEntryToFile from './write-entry-to-file';
 
 export default function stachio(options = { context: {}, cwd: '', destination: '' }) {
+    const { cwd, destination } = options;
+
     /**
      * Implement Harp partials.
      * @see http://harpjs.com/docs/development/partial
      */
-    const partials = readPartials();
+    const partials = readPartials(cwd);
 
     Handlebars.registerPartial(partials as unknown as { string: HandlebarsTemplateDelegate<any> });
 
-    return readFilenames(options.cwd)
+    return readFilenames(cwd)
         .filter(negate(isPrivateFilename))
         .filter(isHandlebarsFilename)
         .map((filepath: string): [filepath: string, fileContents: string] => {
@@ -36,7 +38,6 @@ export default function stachio(options = { context: {}, cwd: '', destination: '
              */
             const layout = maybeGetLayout(filepath);
             const renderedFileContents = renderTemplate(filepath, { context, layout });
-            const { cwd, destination } = options;
             const renderedFilepath = getRenderedFilepath(filepath, { cwd, destination });
 
             return [renderedFilepath, renderedFileContents];

@@ -1,21 +1,12 @@
 #!/usr/bin/env node
 const app = require('../dist/index').default;
-// const app = require('../dist/bundle.min');
-
-// console.log(typeof app, { app })
 
 try {
     const cwd = process.cwd();
-    const partials = app();
+    const destination = 'dist';
+    const pages = app({ cwd, destination });
 
-    console.log( { partials })
-    // partials.forEach(partial => {
-    //     const regex = /^_(.+)\.hbs$/i;
-    //     // const matches = partial.match(regex);
-    //     // const [, publicBasename] = partial.match(regex);
-
-    //     console.log( { publicBasename })
-    // });
+    console.log({ pages })
 } catch (error) {
     console.error(error);
 }

@@ -2,12 +2,13 @@
 const app = require('../dist/index').default;
 // const app = require('../dist/bundle.min');
 
-console.log(typeof app, { app })
+// console.log(typeof app, { app })
 
 try {
+    const cwd = process.cwd();
     const partials = app();
 
-    // console.log( { partials })
+    console.log( { partials })
     // partials.forEach(partial => {
     //     const regex = /^_(.+)\.hbs$/i;
     //     // const matches = partial.match(regex);

@@ -1,3 +1,5 @@
+import path from 'path';
+
 export default function isPrivateFilename(filename: string): boolean {
-    return filename.startsWith('_');
-}
+    return path.basename(filename).startsWith('_');
+};

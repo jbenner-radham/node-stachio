@@ -1,15 +1,14 @@
-import fs from 'fs-extra';
 import Handlebars from 'handlebars';
+import negate from 'lodash.negate';
 import getHarpContext from './get-harp-context';
 import isHandlebarsFilename from './is-handlebars-filename';
-import lsFilesRecursively from './ls-files-recursively';
+import isPrivateFilename from './is-private-filename';
 import maybeGetLayout from './maybe-get-layout';
+import readFilenames from './read-filenames';
 import readPartials from './read-partials';
 import renderTemplate from './render-template';
 
-export default function stachio(options = { context: {} }) {
-    const cwd = process.cwd();
-
+export default function stachio(options = { context: {}, cwd: process.cwd() }) {
     /**
      * Implement Harp partials.
      * @see http://harpjs.com/docs/development/partial
@@ -18,9 +17,14 @@ export default function stachio(options = { context: {} }) {
 
     Handlebars.registerPartial(partials as unknown as { string: HandlebarsTemplateDelegate<any> });
 
-    lsFilesRecursively(cwd)
+    return readFilenames(options.cwd)
+        .filter(filepath => {
+            if (negate(isPrivateFilename)(filepath) && !/node_modules/.exec(filepath) && !/\.git/.exec(filepath)) console.log(filepath)
+
+            return negate(isPrivateFilename)(filepath)
+        })
         .filter(isHandlebarsFilename)
-        .forEach((filepath: string) => {
+        .reduce((accumulator: Record<string, any>, filepath: string): Record<string, string> => {
             /**
              * Implement the Harp metadata protocol.
              * @see http://harpjs.com/docs/development/metadata
@@ -37,6 +41,8 @@ export default function stachio(options = { context: {} }) {
             const renderedFilepath = filepath.replace(/\.hbs$/i, '.html');
 
             // TODO: Instead of writing here collect as a dict and write later?
-            fs.writeFileSync(renderedFilepath, renderedFileContents);
-        });
+            // fs.writeFileSync(renderedFilepath, renderedFileContents);
+
+            return { ...accumulator, [renderedFilepath]: renderedFileContents };
+        }, {});
 }

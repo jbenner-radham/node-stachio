@@ -8,6 +8,7 @@ import maybeGetLayout from './maybe-get-layout';
 import readFilenames from './read-filenames';
 import readPartials from './read-partials';
 import renderTemplate from './render-template';
+import writeEntryToFile from './write-entry-to-file';
 
 export default function stachio(options = { context: {}, cwd: '', destination: '' }) {
     /**
@@ -21,7 +22,7 @@ export default function stachio(options = { context: {}, cwd: '', destination: '
     return readFilenames(options.cwd)
         .filter(negate(isPrivateFilename))
         .filter(isHandlebarsFilename)
-        .reduce((accumulator: Record<string, string>, filepath: string): Record<string, string> => {
+        .map((filepath: string): [filepath: string, fileContents: string] => {
             /**
              * Implement the Harp metadata protocol.
              * @see http://harpjs.com/docs/development/metadata
@@ -38,9 +39,7 @@ export default function stachio(options = { context: {}, cwd: '', destination: '
             const { cwd, destination } = options;
             const renderedFilepath = getRenderedFilepath(filepath, { cwd, destination });
 
-            // TODO: Instead of writing here collect as a dict and write later?
-            // fs.writeFileSync(renderedFilepath, renderedFileContents);
-
-            return { ...accumulator, [renderedFilepath]: renderedFileContents };
-        }, {});
+            return [renderedFilepath, renderedFileContents];
+        })
+        .map(writeEntryToFile);
 }

@@ -22,8 +22,15 @@
     "url": "git+https://github.com/jbenner-radham/node-stachio.git"
   },
   "license": "MIT",
-  "author": "James Benner",
+  "author": "James Benner (http://www.jamesbenner.com/)",
   "main": "./lib/index.js",
+  "bin": {
+    "stachio": "bin/index.js"
+  },
+  "directories": {
+    "lib": "lib",
+    "example": "example"
+  },
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import negate from 'lodash.negate';
-import getHarpContext from './get-harp-context';
+import getMetadata from './get-metadata';
 import getRenderedFilepath from './get-rendered-filepath';
 import isHandlebarsFilename from './is-handlebars-filename';
 import isPrivateFilename from './is-private-filename';
@@ -29,8 +29,8 @@ export default function stachio(options = { context: {}, cwd: '', destination: '
              * Implement the Harp metadata protocol.
              * @see http://harpjs.com/docs/development/metadata
              */
-            const harp = getHarpContext(filepath);
-            const context = { ...harp.data, ...options.context }
+            const metadata = getMetadata(filepath);
+            const context = { ...metadata, ...options.context }
 
             /**
              * Utilize the "_layout.hbs" file if present.

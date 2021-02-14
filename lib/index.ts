@@ -30,7 +30,7 @@ export default function stachio(options = { context: {}, cwd: '', destination: '
              * @see http://harpjs.com/docs/development/metadata
              */
             const metadata = getMetadata(filepath);
-            const context = { ...metadata, ...options.context }
+            const context = { ...metadata, ...options.context };
 
             /**
              * Utilize the "_layout.hbs" file if present.

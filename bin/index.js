@@ -6,12 +6,13 @@ const meow = require('meow');
 const path = require('path');
 const app = require('../dist/index').default;
 const attempt = require('../dist/attempt').default;
+const readConfigFile = require('../dist/read-config-file').default;
 
 const bin = 'stachio';
-const defaultOut = 'dist';
+const defaultDestination = 'dist';
 const cli = meow(`
     Usage
-        $ ${bin} [$SOURCE_DIRECTORY=.] [$OUT_DIRECTORY=${defaultOut}]
+        $ ${bin} [$SOURCE_DIRECTORY=.] [$OUTPUT_DIRECTORY=${defaultDestination}]
 
     Options
         --help, -h       Display this message.
@@ -27,13 +28,10 @@ const cli = meow(`
     }
 });
 
-try {
+(async () => {
     const cwd = attempt(() => path.resolve(cli.input[0])) || process.cwd();
-    const destination = attempt(() => path.resolve(cli.input[1])) || defaultOut;
-    const pages = app({ cwd, destination });
+    const config = await readConfigFile();
+    const destination = attempt(() => path.resolve(cli.input[1])) || defaultDestination;
 
-    //console.log({ pages })
-    //console.log({ 'cli.input': cli.input })
-} catch (error) {
-    console.error(error);
-}
+    app({ ...config, cwd, destination });
+})();

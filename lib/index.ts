@@ -4,8 +4,8 @@ import getMetadata from './get-metadata';
 import getRenderedFilepath from './get-rendered-filepath';
 import isHandlebarsFilename from './is-handlebars-filename';
 import isPrivateFilename from './is-private-filename';
-import maybeGetLayout from './maybe-get-layout';
 import readFilenames from './read-filenames';
+import readLayout from './read-layout';
 import readPartials from './read-partials';
 import renderTemplate from './render-template';
 import writeEntryToFile from './write-entry-to-file';
@@ -36,7 +36,7 @@ export default function stachio(options = { context: {}, cwd: '', destination: '
              * Utilize the "_layout.hbs" file if present.
              * @see http://harpjs.com/docs/development/layout
              */
-            const layout = maybeGetLayout(filepath);
+            const layout = readLayout(filepath);
             const renderedFileContents = renderTemplate(filepath, { context, layout });
             const renderedFilepath = getRenderedFilepath(filepath, { cwd, destination });
 

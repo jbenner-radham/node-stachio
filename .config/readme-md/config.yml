@@ -6,6 +6,5 @@ badges:
     - license
     - node.js
     - npm
-    - travis-ci
 see-also:
   readme-md-cli: https://www.npmjs.com/package/readme-md-cli

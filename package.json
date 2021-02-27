@@ -42,7 +42,8 @@
     "fs-extra": "^9.1.0",
     "handlebars": "^4.7.6",
     "klaw-sync": "^6.0.0",
-    "lodash.negate": "^3.0.2"
+    "lodash.negate": "^3.0.2",
+    "meow": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
@@ -55,7 +56,6 @@
     "babel-loader": "^8.2.2",
     "chai": "^4.3.0",
     "chalk": "^4.1.0",
-    "meow": "^9.0.0",
     "mocha": "^8.3.0",
     "readme-md-cli": "^0.12.0",
     "sort-package-json": "^1.48.1",

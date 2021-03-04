@@ -1,0 +1,42 @@
+.Dd $Mdocdate$
+.Dt STACHIO 1
+.Os
+.\"
+.Nm stachio
+.Nd Render mustachio'd (Handlebars) templates into HTML.
+.\"
+.Sh SYNOPSIS
+.Nm
+.Op Fl hv
+.Op Ar SOURCE_DIRECTORY=\.
+.Op Ar OUTPUT_DIRECTORY=dist
+.\"
+.Sh DESCRIPTION
+The
+.Nm
+program is a static site generator that renders Handlebars templates into HTML.
+.Pp
+The options are as follows:
+.Bl -tag
+.It Fl h, Fl -help
+Displays the help message.
+.It Fl v, Fl -version
+Displays the version number.
+.El
+.Pp
+The positional arguments are as follows:
+.Bl -tag
+.It Op Ar SOURCE_DIRECTORY
+The source directory to search for templates. This defaults to the current working directory.
+.It Op Ar OUTPUT_DIRECTORY
+The directory to which the generated HTML files are output. This defaults to
+.Dq dist .
+.\"
+.Sh EXIT STATUS
+.Ex -std
+.\"
+.Sh SEE ALSO
+.Xr handlebars 1
+.\"
+.Sh AUTHORS
+.An James Benner Aq Mt james.benner@gmail.com

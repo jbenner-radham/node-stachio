@@ -28,8 +28,10 @@
     "stachio": "bin/index.js"
   },
   "directories": {
+    "example": "example",
     "lib": "lib",
-    "example": "example"
+    "man": "man",
+    "test": "test"
   },
   "scripts": {
     "build": "tsc",

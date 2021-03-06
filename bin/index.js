@@ -29,9 +29,14 @@ const cli = meow(`
 });
 
 (async () => {
-    const cwd = attempt(() => path.resolve(cli.input[0])) || process.cwd();
-    const config = await readConfigFile();
-    const destination = attempt(() => path.resolve(cli.input[1])) || defaultDestination;
+    try {
+        const cwd = attempt(() => path.resolve(cli.input[0])) || process.cwd();
+        const config = await readConfigFile();
+        const destination = attempt(() => path.resolve(cli.input[1])) || defaultDestination;
 
-    app({ ...config, cwd, destination });
+        app({ ...config, cwd, destination });
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
 })();

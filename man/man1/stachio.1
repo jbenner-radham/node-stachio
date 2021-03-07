@@ -1,4 +1,4 @@
-.Dd $Mdocdate$
+.Dd March 06, 2021
 .Dt STACHIO 1
 .Os
 .\"
@@ -17,7 +17,7 @@ The
 program is a static site generator that renders Handlebars templates into HTML.
 .Pp
 The options are as follows:
-.Bl -tag
+.Bl -tag -offset 2n
 .It Fl h, Fl -help
 Displays the help message.
 .It Fl v, Fl -version
@@ -25,12 +25,22 @@ Displays the version number.
 .El
 .Pp
 The positional arguments are as follows:
-.Bl -tag
+.Bl -tag -offset 2n
 .It Op Ar SOURCE_DIRECTORY
 The source directory to search for templates. This defaults to the current working directory.
 .It Op Ar OUTPUT_DIRECTORY
 The directory to which the generated HTML files are output. This defaults to
 .Dq dist .
+.\"
+.Sh FILES
+The configuration file is as follows:
+.Bl -tag -offset 2n
+.It Pa .config/stachio/config.js
+This config file path is relative to the project root and merely exports an object with a
+.Dq context
+key that contains any template context variables.
+.Sy This file must be manually created.
+.El
 .\"
 .Sh EXIT STATUS
 .Ex -std

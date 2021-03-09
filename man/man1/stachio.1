@@ -1,4 +1,4 @@
-.Dd March 06, 2021
+.Dd March 09, 2021
 .Dt STACHIO 1
 .Os
 .\"
@@ -31,6 +31,52 @@ The source directory to search for templates. This defaults to the current worki
 .It Op Ar OUTPUT_DIRECTORY
 The directory to which the generated HTML files are output. This defaults to
 .Dq dist .
+.El
+.\"
+.Ss Layout Template
+An optional layout template may be utilized by creating a file explicitly named
+.Dq _layout.hbs .
+This file must contain a content outlet defined like so:
+.Bd -literal -offset 2n
+{{{content}}}
+.Ed
+.Pp
+The above content outlet specifies where the inheriting page content is output.
+.\"
+.Ss Template Partials
+Any
+.Dq private filenames
+.Pq filenames prefixed with an underscore e.g., Dq _partial.hbs
+in the
+.Op Ar SOURCE_DIRECTORY
+which are
+.Sy not
+explicitly named
+.Dq _layout.hbs
+are automatically registered as partials. Partials are
+.Sy not
+directly transformed into HTML files in the
+.Op Ar OUTPUT_DIRECTORY .
+.\"
+.Ss Page Templates
+A page template is any file
+.Sy without
+an underscore
+.Pq Dq _
+prefix e.g.,
+.Dq page.hbs .
+These files inherit from the
+.Sx Layout Template
+if one is present. Also, any
+.Sx Template Partials
+which have been registered can be invoked via:
+.Bd -literal -offset 2n
+{{> partialName }}
+.Ed
+.Pp
+Where
+.Dq partialName
+is replaced with the name of the partial being used.
 .\"
 .Sh FILES
 The configuration file is as follows:

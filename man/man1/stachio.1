@@ -1,4 +1,4 @@
-.Dd March 09, 2021
+.Dd March 10, 2021
 .Dt STACHIO 1
 .Os
 .\"
@@ -6,12 +6,14 @@
 .Nd Render mustachio'd (Handlebars) templates into HTML.
 .\"
 .Sh SYNOPSIS
+.\" ========
 .Nm
 .Op Fl hv
 .Op Ar SOURCE_DIRECTORY=\.
 .Op Ar OUTPUT_DIRECTORY=dist
 .\"
 .Sh DESCRIPTION
+.\" ===========
 The
 .Nm
 program is a static site generator that renders Handlebars templates into HTML.
@@ -34,8 +36,9 @@ The directory to which the generated HTML files are output. This defaults to
 .El
 .\"
 .Ss Layout Template
+.\" ---------------
 An optional layout template may be utilized by creating a file explicitly named
-.Dq _layout.hbs
+.Dq Pa _layout.hbs
 in the
 .Op Ar SOURCE_DIRECTORY .
 This file must contain a content outlet defined like so:
@@ -44,33 +47,50 @@ This file must contain a content outlet defined like so:
 .Ed
 .Pp
 The above content outlet specifies where the inheriting page content is output.
+.Pp
+Layout templates are
+.Sy not
+directly transformed into HTML files in the
+.Op Ar OUTPUT_DIRECTORY .
 .\"
-.Ss Template Partials
+.Ss Partials
+.\" --------
 Any
 .Dq private filenames
-.Pq filenames prefixed with an underscore e.g., Dq _partial.hbs
+.Pq filenames prefixed with an underscore e.g., Dq Pa _partial.hbs
 in the
 .Op Ar SOURCE_DIRECTORY
 which are
 .Sy not
 explicitly named
-.Dq _layout.hbs
-are automatically registered as partials. Partials are
+.Dq Pa _layout.hbs
+are automatically registered as partials.
+.Pp
+Partials are
 .Sy not
 directly transformed into HTML files in the
 .Op Ar OUTPUT_DIRECTORY .
 .\"
+.Ss Data Files
+.\" ----------
+A data file is any file which is named
+.Dq Pa _data.json
+which is in the
+.Op Ar SOURCE_DIRECTORY
+or one of it's children. They consist only of a JSON object which is populated with context variables. Of note, any context variables defined within one of these files is scoped to templates and partials in the same directory as the data file.
+.\"
 .Ss Page Templates
+.\" --------------
 A page template is any file
 .Sy without
 an underscore
 .Pq Dq _
 prefix e.g.,
-.Dq page.hbs .
+.Dq Pa page.hbs .
 These files inherit from the
 .Sx Layout Template
 if one is present. Also, any
-.Sx Template Partials
+.Sx Partials
 which have been registered can be invoked via:
 .Bd -literal -offset 2n
 {{> partialName }}
@@ -78,23 +98,30 @@ which have been registered can be invoked via:
 .Pp
 Where
 .Dq partialName
-is replaced with the name of the partial being used.
+is replaced with the name of the partial being utilized.
+.Pp
+Page templates are directly transformed into HTML files in the
+.Op Ar OUTPUT_DIRECTORY .
 .\"
 .Sh FILES
+.\" =====
 The configuration file is as follows:
 .Bl -tag -offset 2n
 .It Pa .config/stachio/config.js
 This config file path is relative to the project root and merely exports an object with a
 .Dq context
-key that contains any template context variables.
+key that contains any template context variables. Use of a configuration file is optional.
 .Sy This file must be manually created.
 .El
 .\"
 .Sh EXIT STATUS
+.\" ===========
 .Ex -std
 .\"
 .Sh SEE ALSO
+.\" ========
 .Xr handlebars 1
 .\"
 .Sh AUTHORS
+.\" =======
 .An James Benner Aq Mt james.benner@gmail.com

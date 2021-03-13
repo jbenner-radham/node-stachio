@@ -1,4 +1,4 @@
-.Dd March 10, 2021
+.Dd March 12, 2021
 .Dt STACHIO 1
 .Os
 .\"
@@ -78,6 +78,11 @@ A data file is any file which is named
 which is in the
 .Op Ar SOURCE_DIRECTORY
 or one of it's children. They consist only of a JSON object which is populated with context variables. Of note, any context variables defined within one of these files is scoped to templates and partials in the same directory as the data file.
+.Pp
+Data files are
+.Sy not
+directly transformed into HTML files in the
+.Op Ar OUTPUT_DIRECTORY .
 .\"
 .Ss Page Templates
 .\" --------------
@@ -125,3 +130,4 @@ key that contains any template context variables. Use of a configuration file is
 .Sh AUTHORS
 .\" =======
 .An James Benner Aq Mt james.benner@gmail.com
+.Pq Lk http://www.jamesbenner.com/

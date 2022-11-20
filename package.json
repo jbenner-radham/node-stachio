@@ -22,7 +22,7 @@
     "url": "git+https://github.com/jbenner-radham/node-stachio.git"
   },
   "license": "MIT",
-  "author": "James Benner (http://www.jamesbenner.com/)",
+  "author": "James Benner <james.benner@gmail.com> (https://www.jamesbenner.com/)",
   "main": "./lib/index.js",
   "bin": {
     "stachio": "bin/index.js"

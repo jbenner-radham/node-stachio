@@ -1,6 +1,6 @@
 {
   "name": "stachio",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Render mustachio'd (Handlebars) templates into a static site.",
   "keywords": [
     "static",

@@ -27,15 +27,15 @@
   "bin": {
     "stachio": "bin/index.js"
   },
+  "directories": {
+    "lib": "lib",
+    "man": "man",
+    "example": "example",
+    "test": "test"
+  },
   "files": [
     "dist"
   ],
-  "directories": {
-    "example": "example",
-    "lib": "lib",
-    "man": "man",
-    "test": "test"
-  },
   "scripts": {
     "build": "tsc",
     "make:readme": "readme-md > README.md",
@@ -62,7 +62,7 @@
     "chalk": "^4.1.0",
     "mocha": "^8.3.0",
     "readme-md-cli": "^0.12.0",
-    "sort-package-json": "^1.48.1",
+    "sort-package-json": "^1.57.0",
     "ts-loader": "^8.0.15",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"

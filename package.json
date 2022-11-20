@@ -34,7 +34,8 @@
     "test": "test"
   },
   "files": [
-    "dist"
+    "dist",
+    "man"
   ],
   "scripts": {
     "build": "tsc",

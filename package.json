@@ -27,6 +27,9 @@
   "bin": {
     "stachio": "bin/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "directories": {
     "example": "example",
     "lib": "lib",

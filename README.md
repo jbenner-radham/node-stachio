@@ -8,14 +8,43 @@ Render mustachio'd (Handlebars) templates into a static site.
 
 Install
 -------
-```sh
-$ npm install stachio
+```sh-session
+npm install stachio
+```
+
+Usage
+-----
+
+### API
+```js
+import stachio from 'stachio';
+
+const context = { greeting: 'hello' };
+const cwd = process.cwd();
+const destination = 'dist';
+const options = { context, cwd, destination };
+
+stachio(options);
+```
+
+### CLI
+```sh-session
+$ stachio --help
+
+  Render mustachio'd (Handlebars) templates into a static site.
+
+  Usage
+      $ stachio [$SOURCE_DIRECTORY=.] [$OUTPUT_DIRECTORY=dist]
+
+  Options
+      --help, -h       Display this message.
+      --version, -v    Display the application version.
 ```
 
 Testing
 -------
-```sh
-$ npm test
+```sh-session
+npm test
 ```
 
 See Also

@@ -1,9 +1,10 @@
 stachio
 =======
 [![npm](https://img.shields.io/npm/v/stachio.svg?style=flat-square)](https://www.npmjs.com/package/stachio)
+[![node](https://img.shields.io/node/v/stachio.svg?style=flat-square)](https://nodejs.org/)
 [![license](https://img.shields.io/github/license/jbenner-radham/node-stachio.svg?style=flat-square)](LICENSE)
 
-Render mustachio'd (Handlebars) templates into HTML.
+Render mustachio'd (Handlebars) templates into a static site.
 
 Install
 -------

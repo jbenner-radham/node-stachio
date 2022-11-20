@@ -49,6 +49,7 @@ npm test
 
 See Also
 --------
+- [handlebars](https://handlebarsjs.com/)
 - [readme-md-cli](https://www.npmjs.com/package/readme-md-cli)
 
 License

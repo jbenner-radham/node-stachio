@@ -62,7 +62,7 @@
     "@types/mocha": "^8.2.1",
     "chai": "^4.3.0",
     "chalk": "^4.1.0",
-    "mocha": "^8.3.0",
+    "mocha": "^10.1.0",
     "np": "^7.6.2",
     "readme-md-cli": "^0.12.0",
     "sort-package-json": "^1.57.0",
